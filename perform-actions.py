@@ -28,7 +28,7 @@ def insert(session):
     db[orders_collection].insert_one(order, session=session)
     # copy in trx to outbox
     copy_to_outbox(payload=order, action_type='insertOrder', session=session)
-    print(f'inserted & copied: \n {order}')
+    print(f'inserted: \n {order}')
 
 
 def update(session):
@@ -43,7 +43,7 @@ def update(session):
     if op is not None:
         # copy in trx to outbox
         copy_to_outbox(payload=op, action_type='updateOrder', session=session)
-        print(f'updated & copied: \n {op}')
+        print(f'updated: \n {op}')
 
 
 def delete(session):
@@ -55,15 +55,15 @@ def delete(session):
     if op is not None:
         # copy in trx to outbox
         copy_to_outbox(payload=op, action_type='deleteOrder', session=session)
-        print(f'deleted & copied: \n {op}')
+        print(f'deleted: \n {op}')
 
 
 def copy_to_outbox(payload, action_type, session):
-    print('outbox \n', action_type)
     payload['actionType'] = action_type
     # remove _id so mongo can create new one in session
     payload.pop('_id', None)
     db[outbox_collection].insert_one(payload, session=session)
+    print('outbox: \n', action_type)
 
 ####
 # Main start function
