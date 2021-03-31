@@ -35,13 +35,11 @@ python perform-actions.py
 
 ## Outcome
 
-After the process above performs for a minute, take a look at your `outbox` collection, which contains all your events:
+After the process above performs for a minute, take a look at your `outbox` collection, which contains all your events (left window, below).
 
-[screenshot of outbox collection]
+In addition to this, we have the original transactional data that we put in our database. (right window, below)
 
-In addition to this, we have the original transactional data that we put in our database:
-
-[screenshot of transactional data]
+![diagram](assets/output.png)
 
 
 ## Contributing
