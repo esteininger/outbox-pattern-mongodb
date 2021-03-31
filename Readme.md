@@ -7,6 +7,7 @@ This is a demonstration of how an application can use MongoDB to create a `trans
 The outbox pattern is used to guarantee that updates to a database and the sending of an event happen atomically.  This is done by using a local transaction which performs the local work AND pushes event(s) into an outbox collection.  The outbox collection is then read by different thread, process, or service to emit events to stream. This will guarantee at-least-once delivery semantics.
 
 ![diagram](assets/outbox-diagram.png)
+*thanks to https://microservices.io/patterns/data/transactional-outbox.html for the diagram*
 
 ## Installation
 
@@ -39,9 +40,7 @@ After the process above performs for a minute, take a look at your `outbox` coll
 
 In addition to this, we have the original transactional data that we put in our database. (right window, below)
 
-![diagram](assets/output.png)
-*thanks to https://microservices.io/patterns/data/transactional-outbox.html for the diagram*
-
+![output](assets/output.png)
 
 
 ## Contributing
