@@ -40,6 +40,8 @@ After the process above performs for a minute, take a look at your `outbox` coll
 In addition to this, we have the original transactional data that we put in our database. (right window, below)
 
 ![diagram](assets/output.png)
+*thanks to https://microservices.io/patterns/data/transactional-outbox.html for the diagram*
+
 
 
 ## Contributing
