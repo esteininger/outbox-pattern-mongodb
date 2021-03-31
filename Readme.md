@@ -4,9 +4,9 @@ This is a demonstration of how an application can use MongoDB to create a `trans
 
 ### What is the Outbox Pattern?
 
-The outbox pattern is used to guarantee that updates to a database and the sending of an event happen atomically.  This is done by using a local transaction which performs the local work AND pushes event(s) into an outbox table.  The outbox table is then read by different thread, process, or service to emit events to stream. This will guarantee at-lease-once delivery semantics. 
+The outbox pattern is used to guarantee that updates to a database and the sending of an event happen atomically.  This is done by using a local transaction which performs the local work AND pushes event(s) into an outbox collection.  The outbox collection is then read by different thread, process, or service to emit events to stream. This will guarantee at-least-once delivery semantics.
 
-[diagram]
+![diagram](assets/outbox-diagram.png)
 
 ## Installation
 
