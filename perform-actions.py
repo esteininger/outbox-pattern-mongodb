@@ -63,7 +63,7 @@ def copy_to_outbox(payload, action_type, session):
     # remove _id so mongo can create new one in session
     payload.pop('_id', None)
     db[outbox_collection].insert_one(payload, session=session)
-    print('outbox: \n', action_type)
+    print('outbox: ', action_type)
 
 ####
 # Main start function
@@ -77,7 +77,8 @@ def main():
             # each event is inside a session
             time.sleep(1)
             with client.start_session(causal_consistency=True) as session:
-                event(session=session)
+                with session.start_transaction():
+                    event(session=session)
 
 
 if __name__ == '__main__':
